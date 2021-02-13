@@ -22,6 +22,8 @@ impl World {
         if action.can_perform(self) {
             action.perform(self);
             println!("{}", action.to_string(self));
+        } else {
+            println!("Failed to perform action.");
         }
     }
 

@@ -17,7 +17,11 @@ impl Action for Attack {
     fn perform(&self, world: &mut World) {}
 
     fn can_perform(&self, world: &World) -> bool {
-        true
+        let player = &world.players[self.player];
+        let target = &world.players[self.target];
+
+        let diff = (target.x as i16 - player.x as i16) + (target.y as i16 - player.y as i16);
+        diff.abs() == 1
     }
     fn to_string(&self, world: &World) -> String {
         let player = &world.players[self.player];

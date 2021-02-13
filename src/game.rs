@@ -25,6 +25,12 @@ impl Game {
             move_dir: MoveDir::DOWN,
             player: 0,
         });
+        println!("{}", self.world);
+        self.world.perform_action(Attack {
+            attack_type: AttackType::SLASH,
+            player: 1,
+            target: 0,
+        });
 
         println!("{}", self.world);
 
