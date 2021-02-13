@@ -8,24 +8,25 @@ pub enum AttackType {
     OVERHEAD,
 }
 
-pub struct Attack<'a> {
+pub struct Attack {
     pub attack_type: AttackType,
-    pub target: &'a Player,
+    pub player: usize,
+    pub target: usize,
 }
 
-impl Action for Attack<'_> {
-    fn perform(&self, player: &mut Player, world: &mut World) -> bool {
-        true
-    }
+impl Action for Attack {
+    fn perform(&self, world: &mut World) {}
 
-    fn can_perform(&self, player: &Player, world: &World) -> bool {
+    fn can_perform(&self, world: &World) -> bool {
         true
     }
-    fn to_string(&self, player: &Player) -> String {
+    fn to_string(&self, world: &World) -> String {
+        let player = &world.players[self.player];
+        let target = &world.players[self.target];
         match &self.attack_type {
-            AttackType::THRUST => format!("{} thrusts {}", player.name, self.target.name),
-            AttackType::SLASH => format!("{} slashes {}", player.name, self.target.name),
-            AttackType::OVERHEAD => format!("{} overheads {}", player.name, self.target.name),
+            AttackType::THRUST => format!("{} thrusts {}", player.name, target.name),
+            AttackType::SLASH => format!("{} slashes {}", player.name, target.name),
+            AttackType::OVERHEAD => format!("{} overheads {}", player.name, target.name),
         }
     }
 }

@@ -38,11 +38,4 @@ impl Player {
             name: name.to_string(),
         }
     }
-
-    /// Performs a given action on this player
-    pub fn perform_action(&mut self, action: impl Action, world: &mut World) {
-        if action.perform(self, world) {
-            println!("{}", action.to_string(self));
-        }
-    }
 }
