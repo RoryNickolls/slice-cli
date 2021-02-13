@@ -1,5 +1,3 @@
-use crate::action::Action;
-use crate::world::World;
 use std::fmt;
 
 /// Represents a Player

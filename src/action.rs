@@ -1,7 +1,6 @@
 pub mod attack;
 pub mod movement;
 
-use crate::player::Player;
 use crate::world::World;
 
 pub trait Action {

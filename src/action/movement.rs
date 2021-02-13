@@ -1,8 +1,6 @@
 use crate::action::Action;
-use crate::player::{MoveDir, Player};
+use crate::player::MoveDir;
 use crate::world::World;
-
-use std::fmt;
 
 pub struct Move {
     pub move_dir: MoveDir,

@@ -1,9 +1,6 @@
-use std::fmt;
-
 use crate::action::attack::{Attack, AttackType};
 use crate::action::movement::Move;
-use crate::action::Action;
-use crate::player::{MoveDir, Player};
+use crate::player::MoveDir;
 use crate::world::World;
 
 /// Represents the Game
