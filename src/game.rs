@@ -1,5 +1,6 @@
 use std::fmt;
 
+use crate::action::attack::{Attack, AttackType};
 use crate::action::movement::Move;
 use crate::player::{MoveDir, Player};
 use crate::world::World;
@@ -38,6 +39,23 @@ impl Game {
         self.player2.perform_action(
             Move {
                 move_dir: MoveDir::RIGHT,
+            },
+            &mut self.world,
+        );
+        println!("{}", self);
+
+        self.player2.perform_action(
+            Move {
+                move_dir: MoveDir::UP,
+            },
+            &mut self.world,
+        );
+        println!("{}", self);
+
+        self.player1.perform_action(
+            Attack {
+                attack_type: AttackType::OVERHEAD,
+                target: &self.player2,
             },
             &mut self.world,
         );
