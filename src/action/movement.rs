@@ -22,15 +22,20 @@ impl Action for Move {
     /// Checks that the new position is free and in bounds
     fn can_perform(&self, world: &World) -> bool {
         let player = &world.players[self.player];
-        if !world.is_free(player.x, player.y) {
-            return false;
-        }
+        let mut new_x = player.x as i16;
+        let mut new_y = player.y as i16;
         match self.move_dir {
-            MoveDir::UP => player.y >= 1,
-            MoveDir::DOWN => player.y + 1 < world.size,
-            MoveDir::LEFT => player.x >= 1,
-            MoveDir::RIGHT => player.x + 1 < world.size,
-        }
+            MoveDir::UP => new_y -= 1,
+            MoveDir::DOWN => new_y += 1,
+            MoveDir::LEFT => new_x -= 1,
+            MoveDir::RIGHT => new_x += 1,
+        };
+
+        return world.is_free(new_x as u8, new_y as u8)
+            && new_x >= 0
+            && new_y >= 0
+            && new_x < world.size as i16
+            && new_y < world.size as i16;
     }
 
     fn to_string(&self, world: &World) -> String {

@@ -30,10 +30,8 @@ impl World {
 
     /// Checks whether a position is free to move to
     pub fn is_free(&self, x: u8, y: u8) -> bool {
-        x != self.players[0].x
-            && y != self.players[0].y
-            && x != self.players[1].x
-            && y != self.players[1].y
+        (x != self.players[0].x || y != self.players[0].y)
+            && (x != self.players[1].x || y != self.players[1].y)
     }
 }
 
