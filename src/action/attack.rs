@@ -2,8 +2,8 @@ use crate::action::Action;
 use crate::world::World;
 
 pub enum AttackType {
-    THRUST,
     SLASH,
+    THRUST,
     OVERHEAD,
 }
 
@@ -14,8 +14,17 @@ pub struct Attack {
 }
 
 impl Action for Attack {
-    fn perform(&self, world: &mut World) {}
+    /// Applies damage to the other player
+    fn perform(&self, world: &mut World) {
+        let target = &mut world.players[self.target];
+        if target.health.damage(20) {
+            println!("and kills them!");
+        } else {
+            println!("and damages them for 20!");
+        }
+    }
 
+    /// Checks player is in range to attack
     fn can_perform(&self, world: &World) -> bool {
         let player = &world.players[self.player];
         let target = &world.players[self.target];

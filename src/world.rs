@@ -18,15 +18,17 @@ impl World {
         }
     }
 
+    /// Performs an Action on the World
     pub fn perform_action(&mut self, action: impl Action) {
         if action.can_perform(self) {
-            action.perform(self);
             println!("{}", action.to_string(self));
+            action.perform(self);
         } else {
             println!("Failed to perform action.");
         }
     }
 
+    /// Checks whether a position is free to move to
     pub fn is_free(&self, x: u8, y: u8) -> bool {
         x != self.players[0].x
             && y != self.players[0].y
@@ -35,6 +37,7 @@ impl World {
     }
 }
 
+/// Prints the current World state
 impl fmt::Display for World {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         for i in 0..self.size {

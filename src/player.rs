@@ -35,11 +35,12 @@ impl Player {
             x: x,
             y: y,
             name: name.to_string(),
-            health: PlayerHealth::new(100),
+            health: PlayerHealth::new(50),
         }
     }
 }
 
+/// PlayerHealth keeps track of the Player's health
 pub struct PlayerHealth {
     health: u8,
 }
