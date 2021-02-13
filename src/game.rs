@@ -1,6 +1,6 @@
 use std::fmt;
 
-use crate::action::Move;
+use crate::action::movement::Move;
 use crate::player::{MoveDir, Player};
 use crate::world::World;
 

@@ -1,4 +1,4 @@
-mod action;
+pub mod action;
 mod game;
 mod player;
 mod world;
