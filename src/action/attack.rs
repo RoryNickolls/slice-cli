@@ -1,7 +1,6 @@
 use crate::action::Action;
 use crate::player::Player;
-
-use std::fmt;
+use crate::world::World;
 
 pub enum AttackType {
     THRUST,
@@ -9,23 +8,24 @@ pub enum AttackType {
     OVERHEAD,
 }
 
-pub struct Attack {
+pub struct Attack<'a> {
     pub attack_type: AttackType,
-    pub attacker: &Player,
-    pub target: &Player,
+    pub target: &'a Player,
 }
 
-impl Action for Attack {
-    fn perform(&self, player: &mut Player, world: &mut World) {}
+impl Action for Attack<'_> {
+    fn perform(&self, player: &mut Player, world: &mut World) -> bool {
+        true
+    }
 
-    fn can_perform(&self, player: &Player, world: &World) {
+    fn can_perform(&self, player: &Player, world: &World) -> bool {
         true
     }
     fn to_string(&self, player: &Player) -> String {
-        match self.attack_type {
-            THRUST => format!("{} thrusts {}", player.name, self.target.name),
-            SLASH => format!("{} slashes {}", player.name, self.target.name),
-            OVERHEAD => format!("{} overheads {}", player.name, self.target.name),
+        match &self.attack_type {
+            AttackType::THRUST => format!("{} thrusts {}", player.name, self.target.name),
+            AttackType::SLASH => format!("{} slashes {}", player.name, self.target.name),
+            AttackType::OVERHEAD => format!("{} overheads {}", player.name, self.target.name),
         }
     }
 }

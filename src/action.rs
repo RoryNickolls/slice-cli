@@ -1,3 +1,4 @@
+pub mod attack;
 pub mod movement;
 
 use crate::player::Player;
