@@ -6,7 +6,7 @@ use std::fmt;
 pub struct Player {
     pub x: u8,
     pub y: u8,
-    name: String,
+    pub name: String,
 }
 
 /// Possible move directions
@@ -40,9 +40,9 @@ impl Player {
     }
 
     /// Performs a given action on this player
-    pub fn perform_action<T: fmt::Display + Action>(&mut self, action: T, world: &mut World) {
+    pub fn perform_action(&mut self, action: impl Action, world: &mut World) {
         if action.perform(self, world) {
-            println!("{} {}", self.name, action);
+            println!("{}", action.to_string(self));
         }
     }
 }

@@ -26,10 +26,8 @@ impl Action for Move {
     fn can_perform(&self, player: &Player, world: &World) -> bool {
         true
     }
-}
 
-impl fmt::Display for Move {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "moves {}", self.move_dir)
+    fn to_string(&self, player: &Player) -> String {
+        format!("{} moves {}", player.name, self.move_dir)
     }
 }
