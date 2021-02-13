@@ -5,6 +5,7 @@ pub struct Player {
     pub x: u8,
     pub y: u8,
     pub name: String,
+    pub health: PlayerHealth,
 }
 
 /// Possible move directions
@@ -34,6 +35,26 @@ impl Player {
             x: x,
             y: y,
             name: name.to_string(),
+            health: PlayerHealth::new(100),
         }
+    }
+}
+
+pub struct PlayerHealth {
+    health: u8,
+}
+impl PlayerHealth {
+    fn new(max: u8) -> PlayerHealth {
+        PlayerHealth { health: max }
+    }
+
+    pub fn damage(&mut self, amount: u8) -> bool {
+        if self.health > amount {
+            self.health -= amount;
+            return false;
+        }
+
+        self.health = 0;
+        true
     }
 }
