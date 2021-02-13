@@ -21,8 +21,25 @@ Player1 moves DOWN
 | |X| |
 | |O| |
 
+Player2 slashes Player1
+and damages them for 20!
+| | | |
+| |X| |
+| |O| |
+
 Player2 moves RIGHT
 | | | |
 | |X| |
 | | |O|
+
+Player2 moves UP
+| | | |
+| |X|O|
+| | | |
+
+Player2 overheads Player1
+and damages them for 20!
+| | | |
+| |X|O|
+| | | |
 ```
