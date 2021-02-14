@@ -39,7 +39,11 @@ impl Game {
 
         let mut action: Option<Box<dyn Action>> = None;
         loop {
-            println!("{}{}", termion::clear::All, termion::cursor::Goto(1, 1));
+            println!(
+                "{}{}",
+                termion::cursor::Goto(1, 2),
+                termion::clear::AfterCursor,
+            );
             if let Some(a) = action {
                 println!("{}", a.to_string(&self.world));
             }
