@@ -17,7 +17,7 @@ impl Action for Attack {
     /// Applies damage to the other player
     fn perform(&self, world: &mut World) {
         let target = &mut world.players[self.target];
-        if target.health.damage(20) {
+        if target.damage(20) {
             println!("and kills them!");
         } else {
             println!("and damages them for 20!");
