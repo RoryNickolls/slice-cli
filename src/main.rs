@@ -1,3 +1,6 @@
+extern crate ctrlc;
+extern crate termion;
+
 pub mod action;
 mod game;
 mod player;
