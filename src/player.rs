@@ -46,6 +46,13 @@ impl Player {
     pub fn damage(&mut self, amount: u8) -> bool {
         self.health.damage(amount)
     }
+
+    pub fn color(&self) -> termion::color::Rgb {
+        let percentage = self.health() as f32 / 50.0;
+        let red = ((1.0 - percentage) * 255.0) as u8;
+        let green = (percentage * 255.0) as u8;
+        return termion::color::Rgb(red, green, 0);
+    }
 }
 
 /// PlayerHealth keeps track of the Player's health

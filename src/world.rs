@@ -42,14 +42,22 @@ impl fmt::Display for World {
             let mut line: String = "|".to_owned();
             for j in 0..self.size {
                 if self.players[0].y == i && self.players[0].x == j {
-                    line.push_str("X|");
+                    line.push_str(&format!(
+                        "{}X{}|",
+                        termion::color::Fg(self.players[0].color()),
+                        termion::color::Fg(termion::color::Reset)
+                    ));
                 } else if self.players[1].y == i && self.players[1].x == j {
-                    line.push_str("O|");
+                    line.push_str(&format!(
+                        "{}O{}|",
+                        termion::color::Fg(self.players[1].color()),
+                        termion::color::Fg(termion::color::Reset)
+                    ));
                 } else {
                     line.push_str(" |");
                 }
             }
-            write!(f, "{}\n", line);
+            writeln!(f, "{}", line);
         }
 
         Ok(())
